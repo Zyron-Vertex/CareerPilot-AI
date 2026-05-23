@@ -16,6 +16,9 @@ const mysql = require('mysql2/promise')
 // 5. 引入 AI 学习路线路由
 const learningPathRouter = require('./routes/learningPath')
 
+// 新增：引入简历优化路由
+const resumeOptimizerRouter = require('./routes/resumeOptimizer');
+
 // 创建 Express 应用实例
 const app = express()
 
@@ -302,6 +305,9 @@ app.post('/api/records', async (req, res) => {
 
 // 挂载 AI 学习路线路由
 app.use('/api', learningPathRouter);
+
+// 新增：挂载简历优化路由
+app.use('/api', resumeOptimizerRouter);
 
 app.post('/api/test', (req, res) => {
   res.json({ success: true });
